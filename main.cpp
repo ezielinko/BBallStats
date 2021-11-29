@@ -1,11 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include "declarations.hpp"
 
 using namespace std;
 
 int main() {
-    ofstream myFile("LAL_vsPistons");
+    fstream myFile("LAL_vs_Pistons");
 
     if(myFile.is_open()){
         cout << "File opened!" << endl;

@@ -7,24 +7,23 @@ using namespace std;
 
 int main() {
     fstream myFile("LA stats.txt");
-    if(myFile.is_open()){
-        cout << "File opened!" << endl;
-    } else {
-        cout << "Error, could not open the file!" << endl;
-        exit(1);
-    }
+    fstream playerStats ("Player list.txt");
 
-    string input;
-    while (getline(myFile, input)){
-        for(int i = 0; i < input.size(); i++){
-            if(input[i] == '%'){
-                input[i] = '0';
-                input[i] = input[i - 2] / input[i - 1] * 100;
-            }
+    cout << myFile.is_open() << endl;
+    cout << playerStats.is_open() << endl;
+
+    vector<char> stats;
+    char input;
+    while (myFile >> input){
+
+        stats.push_back(input);
+        if(input == '%') {
+            stats.push_back(1);
         }
-        cout << input << endl;
+
     }
 
     myFile.close();
+    playerStats.close();
     return 0;
 }

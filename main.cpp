@@ -14,36 +14,55 @@ int main() {
     cout << playerStats.is_open() << endl;
 
     vector<double> stats;
-    double input;
-    int lineCounter = 0;
-    int sizeCounter = 0;
-
+    int lineCount = 0, sizeCount = 0;
+    double input, totalPoints = 0, missedThrows = 0, eval = 0;
 
 
     while (myFile >> input) {
-        if (lineCounter == 8) {
-            double avg2pts = stats[sizeCounter - 1] / stats[sizeCounter - 2];
+        if(lineCount >= 2 && lineCount <= 5){
+            eval += input;
+        }
+        if (lineCount == 8) {
+            double avg1pts = stats[sizeCount - 1] / stats[sizeCount - 2];
+            stats.push_back(avg1pts);
+            totalPoints += stats[sizeCount - 2];
+            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
+        } else if (lineCount == 11) {
+            double avg2pts = stats[sizeCount - 1] / stats[sizeCount - 2];
             stats.push_back(avg2pts);
-        } else if (lineCounter == 11) {
-            double avg3pts = stats[sizeCounter - 1] / stats[sizeCounter - 2];
+            totalPoints += stats[sizeCount - 2];
+            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
+        } else if (lineCount == 14) {
+            double avg3pts = stats[sizeCount - 1] / stats[sizeCount - 2];
             stats.push_back(avg3pts);
+            totalPoints += stats[sizeCount - 2];
+            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
+        } else if (lineCount == 17) {
+            stats.push_back(totalPoints);
+            eval += totalPoints;
+            totalPoints = 0;
+        } else if (lineCount == 18) {
+            eval = eval - missedThrows - stats[lineCount - 2];
+            stats.push_back(eval);
+            eval = 0;
+            missedThrows = 0;
         } else {
             stats.push_back(input);
         }
-        if (lineCounter == 15){
-            lineCounter = 0;
+        if (lineCount == 18) {
+            lineCount = -1;
         }
-        lineCounter++;
-        sizeCounter++;
+        lineCount++;
+        sizeCount++;
 
 
     }
 
     for (int i = 0; i < stats.size(); i++) {
-        if(i % 3 == 0 && i % 5 == 0) {
+        if (i % 19 == 0) {
             cout << "\n";
         }
-        cout << fixed << stats[i] << " ";
+        cout << stats[i] << " ";
     }
 
     myFile.close();

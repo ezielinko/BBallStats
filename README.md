@@ -10,7 +10,7 @@ Pobranie danych z pliku.
 Format danych z pliku do vectora: Nazwisko | Pozycja | Zbiórki Atak | Zbiórki Obrona | Asysty | Przechwyty | straty| Bloki | za 2 | za 3 | za 1 | faule | eval | +/-.
 Klasy dla zawodników:pozycja, wzrost, waga, średnia zbiórki atak/obrona, średnie asysty, średnia przechwyty, średnia strat, średnia bloki, średnia faule, średnia eval, średnia +/-.
 
-player number POS REB AST STL BLK 2P- 2P+ 2P% 3P- 3P+ 3P% FOUL eval +/-
-eval = pkt sum + reb + ast + stl + blk - (2p-) - (3p-)
+player number POS REB AST STL BLK 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% FOUL LOS eval
+eval = pkt sum + reb + ast + stl + blk - all missed throw's - LOS
 
 Players

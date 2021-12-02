@@ -6,4 +6,4 @@ NR POS REB AST STL BLK 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% FOUL LOS PTS eval
 1 1 15 14 7 1 11 9 00 11 4 00 4 3 00 3 7 00 00
 
 
-EVAL = reb + ast + stl + blk + pts - los - misses
+EVAL = reb + ast + stl + blk + pts - ball loses - missed throw's

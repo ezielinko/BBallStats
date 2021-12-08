@@ -3,4 +3,4 @@ project(BBallStats)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(BBallStats main.cpp)
+add_executable(BBallStats main.cpp Player.cpp Player.h)

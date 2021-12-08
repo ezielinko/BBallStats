@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <iomanip>
 #include "functions.cpp"
 
 using namespace std;
@@ -15,11 +14,11 @@ int main() {
 
     vector<double> stats;
     int lineCount = 0, sizeCount = 0;
-    double input, totalPoints = 0, missedThrows = 0, eval = 0;
+    double input, totalPoints = 0, missedThrows = 0, eval = 0, playerPosition;
 
 
     while (myFile >> input) {
-        if(lineCount >= 2 && lineCount <= 5){
+        if (lineCount >= 2 && lineCount <= 5) {
             eval += input;
         }
         if (lineCount == 8) {
@@ -46,8 +45,13 @@ int main() {
             stats.push_back(eval);
             eval = 0;
             missedThrows = 0;
+        } else if (lineCount == 19) {
+
         } else {
             stats.push_back(input);
+            if (lineCount == 1) {
+                playerPosition = input;
+            }
         }
         if (lineCount == 18) {
             lineCount = -1;

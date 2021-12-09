@@ -11,9 +11,16 @@ EVAL = reb + ast + stl + blk + pts - ball loses - missed throw's
 PER- Player evaluation rating (private idea)
 
 weighting of statistics for each position
-POS REB BLK AST STL PTS
-1    1   1   5   2    1
-2    2   2   3   4    1
-3    3   2   2   4    1
-4    4   5   1   3    1
-5    5   5   1   1    1
+POS REB AST STL BLK PTS
+1    1   5   2   1   1
+2    2   3   4   2   1
+3    3   2   4   2   1
+4    4   1   3   5   1
+5    5   1   1   5   1
+
+
+1 = Point Gard
+2 = Shooting Gard
+3 = Small Forward
+4 = Power Forward
+5 = Center

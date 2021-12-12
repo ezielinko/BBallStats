@@ -3,10 +3,10 @@ using namespace std;
 
 #ifndef BASKETBALLSTATS_DECLARATIONS_HPP
 #define BASKETBALLSTATS_DECLARATIONS_HPP
-void pgPerPattern(vector<double> stats);
-void shPerPattern(vector<double> stats);
-void sfPerPattern(vector<double> stats);
-void pfPerPattern(vector<double> stats);
-void cPerPattern(vector<double> stats);
+double pgPerPattern(vector<double> stats);
+double shPerPattern(vector<double> stats);
+double sfPerPattern(vector<double> stats);
+double pfPerPattern(vector<double> stats);
+double cPerPattern(vector<double> stats);
 
 #endif

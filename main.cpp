@@ -39,21 +39,32 @@ int main() {
         } else if (lineCount == 17) {
             stats.push_back(totalPoints);
             eval += totalPoints;
-            totalPoints = 0;
         } else if (lineCount == 18) {
             eval = eval - missedThrows - stats[lineCount - 2];
             stats.push_back(eval);
             eval = 0;
             missedThrows = 0;
         } else if (lineCount == 19) {
+            if(playerPosition == 1){
+                stats.push_back(pgPerPattern(stats) / totalPoints);
+            } else if(playerPosition == 2){
+                stats.push_back(shPerPattern(stats) / totalPoints);
+            } else if(playerPosition == 3){
+                stats.push_back(sfPerPattern(stats) / totalPoints);
+            } else if(playerPosition == 4){
+                stats.push_back(pfPerPattern(stats) / totalPoints);
+            } else if(playerPosition == 5){
+                stats.push_back(cPerPattern(stats) / totalPoints);
+            }
 
         } else {
             stats.push_back(input);
-            if (lineCount == 1) {
-                playerPosition = input;
-            }
         }
-        if (lineCount == 18) {
+        if(lineCount == 1){
+            playerPosition = stats[sizeCount];
+            totalPoints = 0;
+        }
+        if (lineCount == 19) {
             lineCount = -1;
         }
         lineCount++;
@@ -63,7 +74,7 @@ int main() {
     }
 
     for (int i = 0; i < stats.size(); i++) {
-        if (i % 19 == 0) {
+        if (i % 20 == 0) {
             cout << "\n";
         }
         cout << stats[i] << " ";

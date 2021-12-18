@@ -2,85 +2,21 @@
 #include <fstream>
 #include <vector>
 #include "functions.cpp"
+#include "PlayerClass.h"
 
 using namespace std;
 
 int main() {
     fstream myFile("LA stats.txt");
-    fstream playerStats("Player list.txt");
-
     cout << myFile.is_open() << endl;
-    cout << playerStats.is_open() << endl;
 
-    vector<double> stats;
-    int lineCount = 0, sizeCount = 0;
-    double input, totalPoints = 0, missedThrows = 0, eval = 0, playerPosition;
+    PlayerClass player1;
 
 
-    while (myFile >> input) {
-        if (lineCount >= 2 && lineCount <= 5) {
-            eval += input;
-        }
-        if (lineCount == 8) {
-            double avg1pts = stats[sizeCount - 1] / stats[sizeCount - 2];
-            stats.push_back(avg1pts);
-            totalPoints += stats[sizeCount - 2];
-            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
-        } else if (lineCount == 11) {
-            double avg2pts = stats[sizeCount - 1] / stats[sizeCount - 2];
-            stats.push_back(avg2pts);
-            totalPoints += stats[sizeCount - 2];
-            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
-        } else if (lineCount == 14) {
-            double avg3pts = stats[sizeCount - 1] / stats[sizeCount - 2];
-            stats.push_back(avg3pts);
-            totalPoints += stats[sizeCount - 2];
-            missedThrows += stats[sizeCount - 2] - stats[sizeCount - 1];
-        } else if (lineCount == 17) {
-            stats.push_back(totalPoints);
-            eval += totalPoints;
-        } else if (lineCount == 18) {
-            eval = eval - missedThrows - stats[lineCount - 2];
-            stats.push_back(eval);
-            eval = 0;
-            missedThrows = 0;
-        } else if (lineCount == 19) {
-            if(playerPosition == 1){
-                stats.push_back(pgPerPattern(stats) / totalPoints);
-            } else if(playerPosition == 2){
-                stats.push_back(shPerPattern(stats) / totalPoints);
-            } else if(playerPosition == 3){
-                stats.push_back(sfPerPattern(stats) / totalPoints);
-            } else if(playerPosition == 4){
-                stats.push_back(pfPerPattern(stats) / totalPoints);
-            } else if(playerPosition == 5){
-                stats.push_back(cPerPattern(stats) / totalPoints);
-            }
+    cout << "SURNAME NAME NR POS REB AST STL BLK FOUL LOS 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% PTS eval PER\n";
 
-        } else {
-            stats.push_back(input);
-        }
-        if(lineCount == 1){
-            playerPosition = stats[sizeCount];
-            totalPoints = 0;
-        }
-        if (lineCount == 19) {
-            lineCount = -1;
-        }
-        lineCount++;
-        sizeCount++;
-
-
-    }
-
-    for (int i = 0; i < stats.size(); i++) {
-        if (i % 20 == 0) {
-            cout << "\n";
-        }
-        cout << stats[i] << " ";
-    }
 
     myFile.close();
-    playerStats.close();
     return 0;
 }
+

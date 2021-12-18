@@ -6,25 +6,26 @@ using namespace std;
 
 
 class PlayerClass {
-private:
-    string name;
-    string surname;
-    int age;
-    double height;
-    double weight;
-    string club;
-    int number;
-    string position;
-
 public:
-    void setName(string name);
-    void setSurName(string surname);
-    void setAge(int age);
-    void setHeight(double height);
-    void setWeight(double weight);
-    void setClub(string club);
-    void setNumber(int number);
-    void setPosition(string position);
+    string surname, name;
+    double number, position;
+    double rebounds, assists, steals, blocks, fouls, ballLoses;
+    double allFreeThrows, scoredFreeThrows;
+    double missedFreeThrows = allFreeThrows - scoredFreeThrows;
+    double freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
+    double allTwoPointsShoots, scoredTwoPointsShoots;
+    double missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
+    double twoPointsAccuracy = allTwoPointsShoots / scoredTwoPointsShoots;
+    double allThreePointsShoots,scoredThreePointsShoots;
+    double missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
+    double threePointsAccuracy = allThreePointsShoots / scoredThreePointsShoots;
+    double totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
+    double allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
+    double eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
+    double PER;
+
+
+
 };
 
 

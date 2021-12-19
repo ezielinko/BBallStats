@@ -8,6 +8,5 @@ double shPerPattern(vector<double> stats);
 double sfPerPattern(vector<double> stats);
 double pfPerPattern(vector<double> stats);
 double cPerPattern(vector<double> stats);
-double pointsAvg()
 
 #endif

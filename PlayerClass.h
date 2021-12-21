@@ -25,13 +25,9 @@ public:
     double PER;
 
 
+//    void parser(string input);
+    void parser(const string&, fstream&);
 
-    PlayerClass(string surname, string name, double number, double position, double rebounds, double assists,
-                double steals, double blocks, double fouls, double ballLoses, double allFreeThrows, double scoredFreeThrows,
-                double allTwoPointsShoots, double scoredTwoPointsShoots, double allThreePointsShoots,
-                double scoredThreePointsShoots);
-
-    void printPlayer();
 
 };
 

@@ -1,14 +1,25 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using namespace std;
 
 #include "PlayerClass.h"
 
+PlayerClass::PlayerClass() {
+    missedFreeThrows = (allFreeThrows - scoredFreeThrows);
+    freeThrowsAccuracy = (float) allFreeThrows / (float) scoredFreeThrows;
+    missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
+    twoPointsAccuracy = (float) allTwoPointsShoots / (float) scoredTwoPointsShoots;
+    missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
+    threePointsAccuracy = (float) allThreePointsShoots / (float) scoredThreePointsShoots;
+    totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
+    allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
+    eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
 
+}
 
-
-void PlayerClass::parser(const string& fileName, fstream& myFile) {
+void PlayerClass::readData(const string &fileName, fstream &myFile) {
     myFile.open(fileName);
     myFile >> surname;
     myFile >> name;
@@ -28,6 +39,7 @@ void PlayerClass::parser(const string& fileName, fstream& myFile) {
     myFile >> scoredThreePointsShoots;
 }
 
+
 void PlayerClass::printPlayer() {
     cout << surname + " " + name + " ";
     cout << number << " " << position << " " << rebounds << " " << assists << " " << steals << " " << blocks << " ";
@@ -36,3 +48,6 @@ void PlayerClass::printPlayer() {
     cout << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
     cout << totalPoints << " " << eval << " ";
 }
+
+
+

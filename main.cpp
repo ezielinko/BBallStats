@@ -13,7 +13,7 @@ int main() {
 
     cout << "SURNAME NAME NR POS REB AST STL BLK FOUL LOS 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% PTS eval PER\n";
 
-    player1.parser(fileName,myFile);
+    player1.readData(fileName, myFile);
     player1.printPlayer();
 
 

@@ -8,26 +8,30 @@ using namespace std;
 class PlayerClass {
 public:
     string surname, name;
-    float number, position;
-    float rebounds, assists, steals, blocks, fouls, ballLoses;
-    float allFreeThrows, scoredFreeThrows;
-    float missedFreeThrows = allFreeThrows - scoredFreeThrows;
-    float freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
-    float allTwoPointsShoots, scoredTwoPointsShoots;
-    float missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
-    float twoPointsAccuracy = allTwoPointsShoots / scoredTwoPointsShoots;
-    float allThreePointsShoots,scoredThreePointsShoots;
-    float missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
-    float threePointsAccuracy = allThreePointsShoots / scoredThreePointsShoots;
-    float totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
-    float allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
-    float eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
+    int number, position;
+    int rebounds, assists, steals, blocks, fouls, ballLoses;
+    int allFreeThrows;
+    int scoredFreeThrows;
+    int missedFreeThrows;
+    float freeThrowsAccuracy;
+    int allTwoPointsShoots;
+    int scoredTwoPointsShoots;
+    int missedTwoPointsShoots;
+    float twoPointsAccuracy;
+    int allThreePointsShoots;
+    int scoredThreePointsShoots;
+    int missedThreePointsShoots;
+    float threePointsAccuracy;
+    int totalPoints;
+    int allMissedThrows;
+    int eval;
     float PER;
 
 
 
-    void parser(const string&, fstream&);
+    void readData(const string &fileName, fstream &myFile);
     void printPlayer();
+    PlayerClass();
 
 
 };

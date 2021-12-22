@@ -8,25 +8,26 @@ using namespace std;
 class PlayerClass {
 public:
     string surname, name;
-    double number, position;
-    double rebounds, assists, steals, blocks, fouls, ballLoses;
-    double allFreeThrows, scoredFreeThrows;
-    double missedFreeThrows = allFreeThrows - scoredFreeThrows;
-    double freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
-    double allTwoPointsShoots, scoredTwoPointsShoots;
-    double missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
-    double twoPointsAccuracy = allTwoPointsShoots / scoredTwoPointsShoots;
-    double allThreePointsShoots,scoredThreePointsShoots;
-    double missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
-    double threePointsAccuracy = allThreePointsShoots / scoredThreePointsShoots;
-    double totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
-    double allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
-    double eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
-    double PER;
+    float number, position;
+    float rebounds, assists, steals, blocks, fouls, ballLoses;
+    float allFreeThrows, scoredFreeThrows;
+    float missedFreeThrows = allFreeThrows - scoredFreeThrows;
+    float freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
+    float allTwoPointsShoots, scoredTwoPointsShoots;
+    float missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
+    float twoPointsAccuracy = allTwoPointsShoots / scoredTwoPointsShoots;
+    float allThreePointsShoots,scoredThreePointsShoots;
+    float missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
+    float threePointsAccuracy = allThreePointsShoots / scoredThreePointsShoots;
+    float totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
+    float allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
+    float eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
+    float PER;
 
 
-//    void parser(string input);
+
     void parser(const string&, fstream&);
+    void printPlayer();
 
 
 };

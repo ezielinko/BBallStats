@@ -8,13 +8,13 @@ using namespace std;
 
 int main() {
     fstream myFile;
-    int numberOfPlayers = 5;
+    string fileName = "LA stats.txt";
     PlayerClass player1;
 
     cout << "SURNAME NAME NR POS REB AST STL BLK FOUL LOS 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% PTS eval PER\n";
-    string fileName = "LA stats.txt";
 
     player1.parser(fileName,myFile);
+    player1.printPlayer();
 
 
 

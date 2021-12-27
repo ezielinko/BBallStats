@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ PlayerClass::PlayerClass() {
 
 }
 
-void PlayerClass::readData(const string &fileName, fstream &myFile) {
+void PlayerClass::readDataByOperator(const string &fileName, fstream &myFile) {
     myFile.open(fileName);
     myFile >> surname;
     myFile >> name;
@@ -47,6 +48,13 @@ void PlayerClass::printPlayer() {
     cout << allTwoPointsShoots << " " << scoredTwoPointsShoots << " " << twoPointsAccuracy << " ";
     cout << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
     cout << totalPoints << " " << eval << " ";
+}
+
+void PlayerClass::readDataFromString(string onePlayerData) {
+    stringstream ss;
+    ss << onePlayerData;
+    ss >> surname >> name >> number >> position >> rebounds >> assists >> steals >> blocks >> fouls >> ballLoses;
+    ss >> allFreeThrows >> scoredFreeThrows >> allTwoPointsShoots >> scoredThreePointsShoots;
 }
 
 

@@ -29,7 +29,8 @@ public:
 
 
 
-    void readData(const string &fileName, fstream &myFile);
+    void readDataByOperator(const string &fileName, fstream &myFile);
+    void readDataFromString(string onePlayerData);
     void printPlayer();
     PlayerClass();
 

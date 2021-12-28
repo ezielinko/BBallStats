@@ -29,8 +29,8 @@ public:
 
 
 
-    void readDataByOperator(const string &fileName, fstream &myFile);
-    void readDataFromString(string onePlayerData);
+    void readDataDirectly(const string &fileName, fstream &myFile);
+    void readDataByString(string onePlayerData);
     void printPlayer();
     PlayerClass();
 

@@ -9,22 +9,22 @@ class PlayerClass {
 public:
     string surname, name;
     int number, position;
-    int rebounds, assists, steals, blocks, fouls, ballLoses;
+    float rebounds, assists, steals, blocks, fouls, ballLoses;
     int allFreeThrows;
     int scoredFreeThrows;
     int missedFreeThrows;
     float freeThrowsAccuracy;
-    int allTwoPointsShoots;
-    int scoredTwoPointsShoots;
-    int missedTwoPointsShoots;
+    float allTwoPointsShoots;
+    float scoredTwoPointsShoots;
+    float missedTwoPointsShoots;
     float twoPointsAccuracy;
-    int allThreePointsShoots;
-    int scoredThreePointsShoots;
-    int missedThreePointsShoots;
+    float allThreePointsShoots;
+    float scoredThreePointsShoots;
+    float missedThreePointsShoots;
     float threePointsAccuracy;
-    int totalPoints;
-    int allMissedThrows;
-    int eval;
+    float totalPoints;
+    float allMissedThrows;
+    float eval;
     float PER;
 
 

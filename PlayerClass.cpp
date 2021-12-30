@@ -9,8 +9,9 @@ using namespace std;
 
 PlayerClass::PlayerClass() {
 
-    missedFreeThrows = allFreeThrows - scoredFreeThrows;
-    freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
+    int* pMissedFreeThrows = &missedFreeThrows;
+    *pMissedFreeThrows = allFreeThrows - scoredFreeThrows;
+   /* freeThrowsAccuracy = allFreeThrows / scoredFreeThrows;
     missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
     twoPointsAccuracy = allTwoPointsShoots / scoredTwoPointsShoots;
     missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
@@ -18,7 +19,7 @@ PlayerClass::PlayerClass() {
     totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
     allMissedThrows = missedFreeThrows + missedTwoPointsShoots + missedThreePointsShoots;
     eval = rebounds + assists + steals + blocks + totalPoints - ballLoses - allMissedThrows;
-
+*/
 }
 
 void PlayerClass::readDataDirectly(const string &fileName, fstream &myFile) {

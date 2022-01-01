@@ -8,31 +8,29 @@ using namespace std;
 class PlayerClass {
 public:
     string surname, name;
+    string playerNameToPrint;
     int number, position;
-    int rebounds, assists, steals, blocks, fouls, ballLoses;
-    int allFreeThrows;
-    int scoredFreeThrows;
-    int missedFreeThrows;
-    float freeThrowsAccuracy;
-    int allTwoPointsShoots;
-    int scoredTwoPointsShoots;
-    int missedTwoPointsShoots;
-    float twoPointsAccuracy;
-    int allThreePointsShoots;
-    int scoredThreePointsShoots;
-    int missedThreePointsShoots;
-    float threePointsAccuracy;
-    int totalPoints;
-    int allMissedThrows;
-    int eval;
-    float PER;
+    float rebounds, assists, steals, blocks, fouls, ballLoses;
+    float allFreeThrows, scoredFreeThrows, missedFreeThrows, freeThrowsAccuracy;
+    float allTwoPointsShoots, scoredTwoPointsShoots, missedTwoPointsShoots, twoPointsAccuracy;
+    float allThreePointsShoots, scoredThreePointsShoots, missedThreePointsShoots, threePointsAccuracy;
+    float totalPoints, allMissedThrows;
+    float eval, per;
 
 
 
-    void readDataDirectly(const string &fileName, fstream &myFile);
-    void readDataByString(string onePlayerData);
+    void readAndCalcDataDirectly(const string &fileName, fstream &myFile);
+    void readAndCalcDataByString(const string& onePlayerData);
+    void perByPosition();
+    void pgPER();
+    void sgPER();
+    void sfPER();
+    void pfPER();
+    void cPER();
+    void calculateStats();
+    void setPlayerNameToPrint();
     void printPlayer();
-    PlayerClass();
+
 
 
 };

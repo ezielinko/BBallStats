@@ -9,20 +9,25 @@ using namespace std;
 int main() {
     string fileName = "LA stats.txt";
     fstream myFile(fileName);
+    int numberOfPlayers = 5;
 
     string input;
-    PlayerClass player1;
+    PlayerClass player[numberOfPlayers];
 
 
-    if(myFile.is_open()){
-        getline(myFile, input);
-        player1.readDataByString(input);
-        cout << "SURNAME NAME NR POS REB AST STL BLK FOUL LOS 1P- 1P+ 1P% 2P- 2P+ 2P% 3P- 3P+ 3P% PTS eval PER\n";
+    if (myFile.is_open()) {
+        cout<< "SURNAME NAME                      NR POS REB AST STL BLK FOUL LOS ";
+        cout << "1P- 1P+ 1P%  2P- 2P+ 2P% 3P- 3P+ 3P% PTS eval PER" << endl;
+        for (int i = 0; i < numberOfPlayers; i++) {
+            getline(myFile, input);
+            player[i].readAndCalcDataByString(input);
+//        player1.readAndCalcDataDirectly(fileName,myFile);
+
+            player[i].printPlayer();
+        }
     } else {
         cout << "Error!\n" << endl;
     }
-
-
 
 
     myFile.close();

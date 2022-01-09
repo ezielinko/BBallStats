@@ -9,6 +9,7 @@ class PlayerClass {
 public:
     string surname, name;
     string playerNameToPrint;
+    string stringData;
     int number, position;
     float rebounds, assists, steals, blocks, fouls, ballLoses;
     float allFreeThrows, scoredFreeThrows, missedFreeThrows, freeThrowsAccuracy;
@@ -30,6 +31,7 @@ public:
     void calculateStats();
     void setPlayerNameToPrint();
     void printPlayer();
+    void allDataToString();
 
 
 

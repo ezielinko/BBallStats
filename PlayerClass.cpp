@@ -29,16 +29,18 @@ void PlayerClass::readAndCalcDataByString(const string &onePlayerData) {
     ss >> allThreePointsShoots >> scoredThreePointsShoots;
     calculateStats();
     perByPosition();
+    allDataToString();
 
 }
 
 void PlayerClass::calculateStats() {
+
     missedFreeThrows = allFreeThrows - scoredFreeThrows;
-    freeThrowsAccuracy = scoredFreeThrows / allFreeThrows;
+    freeThrowsAccuracy = scoredFreeThrows / allFreeThrows * 100;
     missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
-    twoPointsAccuracy = scoredTwoPointsShoots / allTwoPointsShoots;
+    twoPointsAccuracy = scoredTwoPointsShoots / allTwoPointsShoots * 100;
     missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
-    threePointsAccuracy = scoredThreePointsShoots / allThreePointsShoots;
+    threePointsAccuracy = scoredThreePointsShoots / allThreePointsShoots * 100;
     totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
     allMissedThrows = missedThreePointsShoots + missedTwoPointsShoots + missedFreeThrows;
     eval = rebounds + assists + steals + blocks + totalPoints - totalPoints - allMissedThrows;
@@ -89,8 +91,8 @@ void PlayerClass::perByPosition() {
 
 void PlayerClass::setPlayerNameToPrint() {
     playerNameToPrint = surname + " " + name;
-    for(int i = 0; i < playerNameToPrint.size(); i++){
-        if(playerNameToPrint.size() < 27) {
+    for (int i = 0; i < playerNameToPrint.size(); i++) {
+        if (playerNameToPrint.size() < 25) {
             playerNameToPrint.push_back(' ');
         } else {
             break;
@@ -101,14 +103,50 @@ void PlayerClass::setPlayerNameToPrint() {
 void PlayerClass::printPlayer() {
 
     setPlayerNameToPrint();
-    cout << setprecision(2) << playerNameToPrint + "       ";
-    cout << number << "   " << position << "  " << rebounds << "   " << assists << "   " << steals << "   " << blocks;
-    cout <<"   "<< fouls <<"    "<< ballLoses <<"   "<< allFreeThrows <<"   "<< scoredFreeThrows <<"  ";
-    cout << freeThrowsAccuracy <<"  "<< allTwoPointsShoots << "  " << scoredTwoPointsShoots <<"  "<< twoPointsAccuracy;
-    cout << "  " << allThreePointsShoots << "   " << scoredThreePointsShoots << "  " << threePointsAccuracy << "  ";
-    cout << totalPoints << "   " << eval << " " << per << endl;
+    cout << playerNameToPrint << stringData << endl;
+    /*
+    cout << setprecision(3) << playerNameToPrint;
+    cout << number << " " << position << " " << rebounds << " " << assists << " " << steals << " " << blocks;
+    cout <<" "<< fouls <<" "<< ballLoses <<" "<< allFreeThrows <<" "<< scoredFreeThrows <<" ";
+    cout << freeThrowsAccuracy <<" "<< allTwoPointsShoots << " " << scoredTwoPointsShoots <<" "<< twoPointsAccuracy;
+    cout << " " << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
+    cout << totalPoints << " " << eval << " " << per << endl;
+     */
 }
+//TO DO Think about better solution with data printing. That not work correctly. Left as illustrative.
+void PlayerClass::allDataToString() {
+    stringstream ss;
+    string tempForLine;
+    ss << " " << number << " " << position << " " << rebounds << " " << assists << " " << steals << " " << blocks;
+    ss << " " << fouls << " " << ballLoses << " " << allFreeThrows << " " << scoredFreeThrows << " ";
+    ss << freeThrowsAccuracy << " " << allTwoPointsShoots << " " << scoredTwoPointsShoots << " " << twoPointsAccuracy;
+    ss << " " << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
+    ss << totalPoints << " " << eval << " " << per;
+    tempForLine = ss.str();
+
+    istringstream iss(tempForLine);
+    string tempForWord;
+    do {
+        iss >> tempForWord;
+
+        if (tempForWord.size() == 1) {
+            tempForWord.insert(0, "  ");
+        } else if (tempForWord.size() == 2) {
+            tempForWord.insert(0, " ");
+        } else if (tempForWord.size() == 3) {
+            tempForWord.insert(0, "  ");
+
+        } else if (tempForWord.size() > 4) {
+            tempForWord.pop_back();
+            tempForWord.pop_back();
+            tempForWord.pop_back();
+            tempForWord.insert(0, "  ");
+
+        }
 
 
+        stringData += tempForWord;
+    } while (iss);
 
+}
 

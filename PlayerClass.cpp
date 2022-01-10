@@ -29,12 +29,9 @@ void PlayerClass::readAndCalcDataByString(const string &onePlayerData) {
     ss >> allThreePointsShoots >> scoredThreePointsShoots;
     calculateStats();
     perByPosition();
-    allDataToString();
-
 }
 
 void PlayerClass::calculateStats() {
-
     missedFreeThrows = allFreeThrows - scoredFreeThrows;
     freeThrowsAccuracy = scoredFreeThrows / allFreeThrows * 100;
     missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
@@ -103,17 +100,13 @@ void PlayerClass::setPlayerNameToPrint() {
 void PlayerClass::printPlayer() {
 
     setPlayerNameToPrint();
-    cout << playerNameToPrint << stringData << endl;
-    /*
-    cout << setprecision(3) << playerNameToPrint;
-    cout << number << " " << position << " " << rebounds << " " << assists << " " << steals << " " << blocks;
-    cout <<" "<< fouls <<" "<< ballLoses <<" "<< allFreeThrows <<" "<< scoredFreeThrows <<" ";
-    cout << freeThrowsAccuracy <<" "<< allTwoPointsShoots << " " << scoredTwoPointsShoots <<" "<< twoPointsAccuracy;
-    cout << " " << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
-    cout << totalPoints << " " << eval << " " << per << endl;
-     */
+    cout << playerNameToPrint << endl;
+
+    allDataToString();
+    cout << stringData << endl;
+
 }
-//TO DO Think about better solution with data printing. That not work correctly. Left as illustrative.
+
 void PlayerClass::allDataToString() {
     stringstream ss;
     string tempForLine;
@@ -126,12 +119,10 @@ void PlayerClass::allDataToString() {
 
     istringstream iss(tempForLine);
     string tempForWord;
-    do {
-        iss >> tempForWord;
-        if(tempForWord.size() == 3){
-            tempForWord.insert(0," ");
-        }
-        for(int i = tempForWord.size(); i < 3; i++) {
+
+    while (iss >> tempForWord){
+
+        for(int i = tempForWord.size(); i < 4; i++) {
             tempForWord.insert(0," ");
         }
         for(int i = tempForWord.size(); i > 4; i--) {
@@ -141,7 +132,7 @@ void PlayerClass::allDataToString() {
 
         tempForWord.insert(0," ");
         stringData += tempForWord;
-    } while (iss);
+    }
 
 }
 

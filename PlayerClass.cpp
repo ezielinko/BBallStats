@@ -128,23 +128,18 @@ void PlayerClass::allDataToString() {
     string tempForWord;
     do {
         iss >> tempForWord;
-
-        if (tempForWord.size() == 1) {
-            tempForWord.insert(0, "  ");
-        } else if (tempForWord.size() == 2) {
-            tempForWord.insert(0, " ");
-        } else if (tempForWord.size() == 3) {
-            tempForWord.insert(0, "  ");
-
-        } else if (tempForWord.size() > 4) {
+        if(tempForWord.size() == 3){
+            tempForWord.insert(0," ");
+        }
+        for(int i = tempForWord.size(); i < 3; i++) {
+            tempForWord.insert(0," ");
+        }
+        for(int i = tempForWord.size(); i > 4; i--) {
             tempForWord.pop_back();
-            tempForWord.pop_back();
-            tempForWord.pop_back();
-            tempForWord.insert(0, "  ");
 
         }
 
-
+        tempForWord.insert(0," ");
         stringData += tempForWord;
     } while (iss);
 

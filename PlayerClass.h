@@ -6,7 +6,7 @@ using namespace std;
 
 
 class PlayerClass {
-public:
+
     string surname, name;
     string playerNameToPrint;
     string stringData;
@@ -19,7 +19,9 @@ public:
     float eval, per;
 
 
-
+public:
+    PlayerClass(string);
+    ~PlayerClass();
     void readAndCalcDataDirectly(const string &fileName, fstream &myFile);
     void readAndCalcDataByString(const string& onePlayerData);
     void perByPosition();
@@ -32,6 +34,7 @@ public:
     void setPlayerNameToPrint();
     void printPlayer();
     void allDataToString();
+    string saveData();
 
 
 

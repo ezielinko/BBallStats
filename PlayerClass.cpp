@@ -2,12 +2,18 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <iomanip>
+#include <cmath>
+#include "PlayerClass.h"
 
 using namespace std;
 
-#include "PlayerClass.h"
 
+PlayerClass::PlayerClass(string s) {
+    readAndCalcDataByString(s);
+
+}
+
+PlayerClass::~PlayerClass() = default;
 
 void PlayerClass::readAndCalcDataDirectly(const string &fileName, fstream &myFile) {
 
@@ -19,7 +25,6 @@ void PlayerClass::readAndCalcDataDirectly(const string &fileName, fstream &myFil
 
 
 }
-
 
 void PlayerClass::readAndCalcDataByString(const string &onePlayerData) {
     stringstream ss;
@@ -33,34 +38,34 @@ void PlayerClass::readAndCalcDataByString(const string &onePlayerData) {
 
 void PlayerClass::calculateStats() {
     missedFreeThrows = allFreeThrows - scoredFreeThrows;
-    freeThrowsAccuracy = scoredFreeThrows / allFreeThrows * 100;
+    freeThrowsAccuracy = floor(scoredFreeThrows / allFreeThrows * 100) / 100;
     missedTwoPointsShoots = allTwoPointsShoots - scoredTwoPointsShoots;
-    twoPointsAccuracy = scoredTwoPointsShoots / allTwoPointsShoots * 100;
+    twoPointsAccuracy = floor(scoredTwoPointsShoots / allTwoPointsShoots * 100) / 100;
     missedThreePointsShoots = allThreePointsShoots - scoredThreePointsShoots;
-    threePointsAccuracy = scoredThreePointsShoots / allThreePointsShoots * 100;
+    threePointsAccuracy = floor(scoredThreePointsShoots / allThreePointsShoots * 100) / 100;
     totalPoints = scoredFreeThrows + (scoredTwoPointsShoots * 2) + (scoredThreePointsShoots * 3);
     allMissedThrows = missedThreePointsShoots + missedTwoPointsShoots + missedFreeThrows;
     eval = rebounds + assists + steals + blocks + totalPoints - totalPoints - allMissedThrows;
 }
 
 void PlayerClass::pgPER() {
-    per = (rebounds * 1 + assists * 5 + steals * 3 + blocks + 1) / totalPoints;
+    per = floor(((rebounds * 1 + assists * 5 + steals * 3 + blocks + 1) / totalPoints) * 100) / 100;
 }
 
 void PlayerClass::sgPER() {
-    per = (rebounds * 2 + assists * 3 + steals * 4 + blocks + 2) / totalPoints;
+    per = floor(((rebounds * 2 + assists * 3 + steals * 4 + blocks + 2) / totalPoints) * 100) / 100;
 }
 
 void PlayerClass::sfPER() {
-    per = (rebounds * 3 + assists * 2 + steals * 4 + blocks + 2) / totalPoints;
+    per = floor(((rebounds * 3 + assists * 2 + steals * 4 + blocks + 2) / totalPoints) * 100) / 100;
 }
 
 void PlayerClass::pfPER() {
-    per = (rebounds * 4 + assists * 1 + steals * 3 + blocks + 4) / totalPoints;
+    per = floor(((rebounds * 4 + assists * 1 + steals * 3 + blocks + 4) / totalPoints) * 100) / 100;
 }
 
 void PlayerClass::cPER() {
-    per = (rebounds * 5 + assists * 1 + steals * 1 + blocks + 5) / totalPoints;
+    per = floor(((rebounds * 5 + assists * 1 + steals * 1 + blocks + 5) / totalPoints) * 100) / 100;
 }
 
 void PlayerClass::perByPosition() {
@@ -109,12 +114,12 @@ void PlayerClass::printPlayer() {
 
 void PlayerClass::allDataToString() {
     stringstream ss;
-    string tempForLine;
     ss << " " << number << " " << position << " " << rebounds << " " << assists << " " << steals << " " << blocks;
     ss << " " << fouls << " " << ballLoses << " " << allFreeThrows << " " << scoredFreeThrows << " ";
     ss << freeThrowsAccuracy << " " << allTwoPointsShoots << " " << scoredTwoPointsShoots << " " << twoPointsAccuracy;
     ss << " " << allThreePointsShoots << " " << scoredThreePointsShoots << " " << threePointsAccuracy << " ";
     ss << totalPoints << " " << eval << " " << per;
+    string tempForLine;
     tempForLine = ss.str();
 
     istringstream iss(tempForLine);
@@ -125,14 +130,12 @@ void PlayerClass::allDataToString() {
         for(int i = tempForWord.size(); i < 4; i++) {
             tempForWord.insert(0," ");
         }
-        for(int i = tempForWord.size(); i > 4; i--) {
-            tempForWord.pop_back();
-
-        }
 
         tempForWord.insert(0," ");
         stringData += tempForWord;
     }
 
 }
-
+string PlayerClass::saveData() {
+    return playerNameToPrint + stringData;
+}

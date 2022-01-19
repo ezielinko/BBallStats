@@ -26,9 +26,6 @@ int main() {
             PlayerClass player(input);
             player.printPlayer();
             saveData << player.saveData() << endl;
-
-
-
         }
     } else {
         cout << "Error!\n" << endl;

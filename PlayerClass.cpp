@@ -10,6 +10,10 @@ using namespace std;
 
 PlayerClass::PlayerClass(string s) {
     readAndCalcDataByString(s);
+    calculateStats();
+    perByPosition();
+    setPlayerNameToPrint();
+    allDataToString();
 
 }
 
@@ -32,8 +36,7 @@ void PlayerClass::readAndCalcDataByString(const string &onePlayerData) {
     ss >> surname >> name >> number >> position >> rebounds >> assists >> steals >> blocks >> fouls >> ballLoses;
     ss >> allFreeThrows >> scoredFreeThrows >> allTwoPointsShoots >> scoredTwoPointsShoots;
     ss >> allThreePointsShoots >> scoredThreePointsShoots;
-    calculateStats();
-    perByPosition();
+
 }
 
 void PlayerClass::calculateStats() {
@@ -103,13 +106,8 @@ void PlayerClass::setPlayerNameToPrint() {
 }
 
 void PlayerClass::printPlayer() {
-
-    setPlayerNameToPrint();
     cout << playerNameToPrint << endl;
-
-    allDataToString();
     cout << stringData << endl;
-
 }
 
 void PlayerClass::allDataToString() {
